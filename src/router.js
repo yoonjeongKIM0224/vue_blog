@@ -2,6 +2,8 @@ import { createWebHistory, createRouter } from 'vue-router';
 import TheList from './components/TheList.vue'
 import TheHome from './components/TheHome.vue'
 import TheDetail from './components/TheDetail.vue'
+import TheAuthor from './components/TheAuthor.vue'
+import TheComment from './components/TheComment.vue'
 
 const routes = [
   {
@@ -13,7 +15,21 @@ const routes = [
     component: TheList,
   },
   {
-    path: '/Detail',
+    path: '/Detail/:id',
+    component: TheDetail,
+    children: [
+      {
+        path: 'author',
+        component: TheAuthor,
+      },
+      {
+        path: 'comment',
+        component: TheComment,
+      },
+    ]
+  },
+  {
+    path: '/error',
     component: TheDetail,
   },
 ];
